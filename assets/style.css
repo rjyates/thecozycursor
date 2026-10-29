@@ -42,7 +42,7 @@ header.site img { height: 44px; width: auto; }
 header.site nav a { margin-left: 16px; text-decoration: none; font-size: 16px; }
 header.site nav a:first-child { margin-left: 0; }
 
-main { padding: 48px 0 64px; }
+main.wrap { padding-top: 48px; padding-bottom: 64px; }
 
 h1, h2 {
   font-family: var(--serif);
@@ -68,7 +68,7 @@ h2 { font-size: 30px; margin: 40px 0 8px; }
 }
 .button:hover { background: var(--cream); color: var(--espresso); }
 
-.pillars { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.pillars { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
 .pillars li { border: 1px solid var(--walnut); border-radius: 12px; padding: 16px; }
 .pillars strong { display: block; font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 22px; color: var(--amber); }
 
