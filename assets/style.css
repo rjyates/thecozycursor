@@ -108,18 +108,33 @@ section.block { padding: 88px 0; border-top: 1px solid rgba(201, 160, 99, 0.18);
 .block-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; margin-bottom: 40px; }
 .block-head p { max-width: 28em; color: var(--muted); margin: 0; }
 
-/* Three doors: a staggered row, the first one wider */
-.doors { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 40px; align-items: start; }
-.door:nth-child(2) { margin-top: 72px; }
-.door:nth-child(3) { margin-top: 24px; }
-.door .frame { margin-bottom: 20px; }
-.door h3 { margin-bottom: 8px; }
-.door p { color: var(--muted); font-size: 18px; }
-.door .kicker { margin-bottom: 6px; }
+/* Feature rows: art on one side, words on the other */
+.feature { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: center; }
+.feature.flip > :first-child { order: 2; }
+.feature h2 { margin-bottom: 16px; }
+.feature .frame img { aspect-ratio: 4 / 3; object-fit: cover; object-position: center 60%; }
+
+ul.gear { list-style: none; padding: 0; margin: 24px 0 0; columns: 2; column-gap: 32px; font-size: 18px; color: var(--muted); }
+ul.gear li { break-inside: avoid; padding: 4px 0 4px 22px; position: relative; }
+ul.gear li::before { content: "º6"; position: absolute; left: 0; color: var(--gilt); font-size: 13px; top: 9px; }
+
+/* Device mock-ups, drawn in CSS so any art can sit inside */
+.devices { position: relative; padding: 0 9% 64px 0; }
+.monitor { background: #0d0907; border: 12px solid #0d0907; border-radius: 10px; box-shadow: 0 0 0 1px rgba(201, 160, 99, 0.35), 0 30px 60px rgba(0, 0, 0, 0.45); }
+.monitor img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 2px; }
+.monitor::after { content: ""; display: block; width: 22%; height: 34px; margin: 12px auto -46px; background: linear-gradient(#1a120d, #0d0907); clip-path: polygon(30% 0, 70% 0, 100% 100%, 0 100%); }
+.phone { position: absolute; right: 0; bottom: 0; width: 27%; background: #0d0907; border: 7px solid #0d0907; border-radius: 26px; box-shadow: 0 0 0 1px rgba(201, 160, 99, 0.45), 0 24px 48px rgba(0, 0, 0, 0.5); }
+.phone img { width: 100%; aspect-ratio: 9 / 19; object-fit: cover; border-radius: 19px; }
+
+.kindle { position: relative; width: min(320px, 80%); margin: 0 auto; aspect-ratio: 127.6 / 176.7; border-radius: 22px; padding: 9px; background: rgba(243, 230, 208, 0.12); box-shadow: 0 0 0 1px rgba(243, 230, 208, 0.35), 0 30px 60px rgba(0, 0, 0, 0.5); transform: rotate(-3deg); }
+.kindle img { width: 100%; height: 100%; object-fit: cover; border-radius: 14px; }
+.kindle::after { content: ""; position: absolute; inset: 9px; border-radius: 14px; background: linear-gradient(125deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0) 32%, rgba(255, 255, 255, 0) 70%, rgba(255, 255, 255, 0.08) 100%); }
+
+.note { font-size: 15px; font-style: italic; color: var(--muted); margin-top: 14px; }
 
 /* Pull quote band */
 .quote { position: relative; padding: 120px 0; text-align: center; overflow: hidden; border-top: 1px solid rgba(201, 160, 99, 0.18); }
-.quote::before { content: ""; position: absolute; inset: 0; background: url("img/art/tree-village-768.jpg") center 40% / cover; opacity: 0.22; }
+.quote::before { content: ""; position: absolute; inset: 0; background: url("img/art/tree-village-wide.jpg") center / cover; opacity: 0.22; }
 .quote::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at center, transparent 20%, var(--espresso) 80%); }
 .quote blockquote { position: relative; z-index: 1; margin: 0; font-size: clamp(40px, 6vw, 72px); font-style: italic; line-height: 1.05; }
 .quote cite { position: relative; z-index: 1; display: block; margin-top: 18px; font-style: normal; }
@@ -158,18 +173,14 @@ footer.site p { margin: 0; }
 @media (max-width: 860px) {
   .hero { grid-template-columns: 1fr; gap: 40px; padding: 48px 16px 64px; }
   .hero .frame { justify-self: center; max-width: 340px; }
-  .split { grid-template-columns: 1fr; }
-  .doors { grid-template-columns: 1fr; gap: 48px; }
-  .door { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 24px; align-items: center; }
-  .doors .door:nth-child(n) { margin-top: 0; }
-  .door .frame { margin-bottom: 0; }
+  .split, .feature { grid-template-columns: 1fr; gap: 40px; }
+  .feature.flip > :first-child { order: 0; }
   section.block { padding: 64px 0; }
 }
 @media (max-width: 520px) {
   body { font-size: 19px; }
   header.site nav { gap: 16px; }
-  .door { grid-template-columns: 1fr; }
-  .door .frame { max-width: 360px; }
+  ul.gear { columns: 1; }
   .shop-index li { grid-template-columns: 44px 1fr; }
   .shop-index em { grid-column: 2; }
   .quote { padding: 88px 0; }
