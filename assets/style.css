@@ -169,6 +169,7 @@ footer.site { border-top: 1px solid rgba(201, 160, 99, 0.25); padding: 36px 0 48
 footer.site .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px 32px; }
 footer.site nav { display: flex; flex-wrap: wrap; gap: 8px 22px; }
 footer.site p { margin: 0; }
+footer.site p.fine { flex-basis: 100%; margin-top: 20px; font-size: 13px; line-height: 1.5; opacity: 0.75; }
 
 @media (max-width: 860px) {
   .hero { grid-template-columns: 1fr; gap: 40px; padding: 48px 16px 64px; }
